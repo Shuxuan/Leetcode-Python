@@ -1,8 +1,20 @@
 from sets import Set
 
+import re
+
 
 class Solution(object):
     def reverseVowels(self, s):
+        """
+        :type s: str
+        :rtype: str
+        """
+
+        vowels = re.findall('(?i)[aeiou]', s)
+
+        return re.sub('(?i)[aeiou]', lambda m: vowels.pop(), s)
+
+    def reverseVowels2(self, s):
         """
         :type s: str
         :rtype: str
@@ -23,3 +35,9 @@ class Solution(object):
             left, right = left + 1, right - 1
 
         return ''.join(ls)
+
+if __name__ == '__main__' :
+    str = 'hello'
+    rst = Solution.reverseVowels(Solution(), str)
+    print rst
+
